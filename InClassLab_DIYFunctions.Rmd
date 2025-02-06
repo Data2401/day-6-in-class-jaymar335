@@ -16,7 +16,14 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
+#Function to convert fahrenheit to celsius
+fahrenheit_to_celsius <- function(fahrenheit) { 
+  celsius <- (fahrenheit - 32) * 5 / 9 
+  return(celsius)
+}
 
+#Using the function
+fahrenheit_to_celsius(100)
 
 ```
 
@@ -24,6 +31,17 @@ The questions from your notes today are below, please copy your answers them her
 
 
 ```{r}
+
+#Function to convert both celsius and meters
+convert_values <- function(fahrenheit, feet) {
+  celsius <- (fahrenheit - 32) * 5 / 9
+  meters <- feet * 0.304
+  return(c(celsius, meters)) #'c' combines
+}
+
+#Using the function
+convert_values(212, 3)
+
 
 
 ```
@@ -33,6 +51,17 @@ The questions from your notes today are below, please copy your answers them her
 
 ```{R}
 
+check_num <- function(num) {
+  if(num > 0) {
+    print("Number is positive.")
+  } else if (num < 0) {
+    print("Number is negative.")
+  } else {
+    print("Number is zero.")
+  }
+}
+
+check_num(100)
 
 ```
 
@@ -40,17 +69,36 @@ The questions from your notes today are below, please copy your answers them her
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
+absolute_value <- function(num) {
+  if (num < 0) {
+    return(num * -1)
+  } else {
+    return(num)
+  }    
+}
 
-
+absolute_value(0)
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
+absolute_value <- function(num) {
+  if(is.character(num)) {
+    print("Please pass a numerical value to this function")
+    return(NULL)
+  }
+  
+  if(num < 0) {
+    return(num * -1)
+  } else {
+    return(num)
+  }
+}
 
-
-
+absolute_value("thirty four")
+absolute_value(34)
 ```
    
    
